@@ -1,0 +1,90 @@
+<div style="height:100px; background:cadetblue" />
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="col-md-1">
+</div>
+<div class="col-md-10">
+    <form method="POST">
+        <div class="form-group" hidden>
+            <input type="text" id="MaGhe" name="MaGhe" value="{{MaGhe}}">
+        </div>
+        <div class="row">
+            <div class="col-xs-4 col-sm-2 col-md-1">
+                <label class="mave">Họ và tên:
+                    <!--Mã vé-->
+                </label>
+            </div>
+            <div class="col-xs-8 col-sm-4 col-md-4">
+                <div class="">
+                    <input type="text" class="form-control ng-pristine ng-valid" placeholder="Nhập họ và tên đầy đủ như trong CMND"
+                        id="HoTen" name="HoTen" required>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-xs-4 col-sm-2 col-md-1">
+                <label class="kt-form-label ng-binding">CMND
+                </label>
+            </div>
+            <div class="col-xs-8 col-sm-4 col-md-4">
+                <div class="form-group">
+                    <input type="number" class="form-control ng-pristine ng-valid"  placeholder="Số chứng minh nhân dân"
+                        id="CMND" name="CMND" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 col-sm-2 col-md-1">
+                <label class="kt-form-label ng-binding">Số điện thoại
+                </label>
+            </div>
+            <div class="col-xs-8 col-sm-4 col-md-4">
+                <div class="form-group">
+
+                    <input type="number" class="form-control ng-pristine ng-valid" placeholder="Nhập số di động để liên hệ" id="SoDienThoai" name="SoDienThoai" required>
+                </div>
+            </div>
+
+            <div class="col-md-2"></div>
+            <div class="col-xs-4 col-sm-2 col-md-1">
+                <label class="kt-form-label ng-binding">Địa chỉ
+                </label>
+            </div>
+            <div class="col-xs-8 col-sm-4 col-md-4">
+                <div class="form-group">
+                    <input type="text" class="form-control ng-pristine ng-valid" placeholder="Địa chỉ hiện tại"
+                        id="DiaChi" name="DiaChi" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 col-sm-2 col-md-1">
+                <label class="kt-form-label ng-binding">Email
+                    <!--Ga di-->
+                </label>
+            </div>
+            <div class="col-xs-8 col-sm-4 col-md-4">
+                <div class="form-group">
+                    <input type="text" class="form-control ng-pristine ng-valid" placeholder="Nhập địa chỉ email thường dùng" id="Email" name="Email" required>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label>Thành tiền:   <font size="15" color="red">{{number_format GiaVe}}</font>
+                </label>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-warning">Tiến hành đặt vé</button>
+        </div>
+    </form>
+
+    <br/>
+    <br/>
+    <br/>
+</div>
+<div class="col-md-1">
+</div>

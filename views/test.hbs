@@ -1,0 +1,144 @@
+<aside id="colorlib-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url(images/cover-img-5.jpg);">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
+                            <div class="slider-text-inner text-center">
+                                <h1>Kiểm tra vé</h1>
+                                <h2>Đảm bảo quyền lợi</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+            <br>
+            <h3 class="ng-binding">
+                <b>KIỂM TRA VÉ</b>
+            </h3>
+            <div class="alert alert-info">
+                <div ng-bind-html="'PKTraVe_MoTa'|translate" class="ng-binding">Theo quy định của Tổng công ty Ðường sắt Viêt Nam, hành khách có thông tin giấy tờ tùy thân trùng với thông
+                    tin trên vé điện tử mới đủ điều kiện vào ga lên tàu.
+                    <br>Ðể đảm bảo quyền lợi cho hành khách, tránh mua phải vé gỉa, hoặc vé không đúng với quy định, quý khách
+                    có thể kiểm tra lại vé điện tử của mình bằng cách điền đầy đủ các thông tin dưới dây.</div>
+            </div>
+
+            {{#if valid}}
+            <div class="alert alert-success" role="alert" id="alert">
+                <h4 class="alert-heading">Kiểm tra thông tin vé</h4>
+                {{#with data}}
+                    <p>Họ và tên: <b>{{HoTen}}</b></p>
+                    <p>Mã phiếu đặt vé: <b>{{MaPhieu}}</b></p>
+                    <p>Mã giao dịch: <b>{{MaGD}}</b></p>
+                    <p>Tình trạng: <b>{{../TinhTrang}}</b></p>
+                    {{#if ../canCancel}}
+                    <hr>
+                    <form method="POST" id="cancelForm">
+                        <input value="1" readonly hidden name="Huy"/>
+                        <input value="{{MaPhieu}}" readonly hidden name="MaPhieu"/>
+                        <input value="{{MaGD}}" readonly hidden name="MaGD"/>
+                        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#confirmModal">Huỷ vé này</button>
+                    </form>
+                    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel"><b>Xác nhận</b></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Bạn có muốn tiếp tục huỷ vé đã đặt này?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                                    <button type="submit" form="cancelForm" class="btn btn-primary">Có</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
+                {{/with}}
+            </div>
+            {{/if}} 
+            {{#if invalid}}
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                Thông tin trên vé không hợp lệ. Quý khách vui lòng kiểm tra và nhập lại. Xin chân thành cám ơn!
+            </div>
+            {{/if}}
+            {{#if success}}
+                <div class="alert alert-success" role="alert">
+                    Đã huỷ thành công
+                </div>
+            {{/if}}
+            {{#if fail}}
+                <div class="alert alert-success" role="alert">
+                    Thao tác huỷ thất bại
+                </div>
+            {{/if}}
+        </div>
+    </div>
+
+    <form method="POST">
+        <div class="row">
+            <div class="col-xs-4 col-sm-2 col-md-1">
+                <label class="mave">Mã phiếu đặt vé
+                    <!--Mã vé-->
+                </label>
+            </div>
+            <div class="col-xs-8 col-sm-4 col-md-4">
+                <div class="">
+                    <input type="text" class="form-control ng-pristine ng-valid" placeholder="Nhập mã đặt vé được cung cấp khi đặt vé" id="MaVe"
+                        name="MaVe">
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-xs-4 col-sm-2 col-md-1">
+                <label class="kt-form-label ng-binding">Mã ghế
+                    <!--Mác tàu-->
+                </label>
+            </div>
+            <div class="col-xs-8 col-sm-4 col-md-4">
+                <div class="form-group">
+
+                    <input type="text" class="form-control ng-pristine ng-valid" placeholder="Nhập mã ghế đã đặt" id="MaGhe" name="MaGhe">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 col-sm-2 col-md-1">
+                <label class="kt-form-label ng-binding">Số CMND
+                    <!--Ga d?n-->
+                </label>
+            </div>
+            <div class="col-xs-8 col-sm-4 col-md-4">
+                <div class="form-group">
+
+                    <input type="text" class="form-control ng-pristine ng-valid" placeholder="Nhập mã ga đến tại đây" id="gaDen" name="CMND">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-warning">Kiểm tra vé</button>
+        </div>
+
+    </form>
+
+</div>
+
+<br>
+<br>
